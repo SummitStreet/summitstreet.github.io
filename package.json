@@ -1,0 +1,32 @@
+{
+  "name": "summitstreet.github.io",
+  "version": "1.0.0",
+  "description": "https://www.summitstreet.tech",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:html && npm run build:assets",
+    "build:html": "shx mkdir -p docs && shx cp -r src/html/* docs/",
+    "build:assets": "shx mkdir -p docs/assets && shx cp -r src/assets/* docs/assets && shx sed -i 's/\\.\\.\\/assets/assets/g' docs/index.html",
+    "build:clean": "shx rm -rf docs",
+    "format": "prettier --write .",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "lint:css": "stylelint \"**/*.html\"",
+    "lint:js": "eslint .",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+  },
+  "keywords": [],
+  "author": "David Padgett <https://github.com/SummitStreet>",
+  "devDependencies": {
+    "eslint": "9.39.1",
+    "eslint-plugin-html": "8.1.4",
+    "globals": "17.4.0",
+    "htmlhint": "1.9.2",
+    "postcss-html": "1.8.1",
+    "prettier": "3.6.2",
+    "shx": "0.4.0",
+    "stylelint": "17.6.0",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-prettier": "5.0.3"
+  },
+  "dependencies": {}
+}
