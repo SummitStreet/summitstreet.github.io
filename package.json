@@ -1,12 +1,13 @@
 {
   "name": "summitstreet.github.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "https://www.summitstreet.tech",
   "type": "module",
   "scripts": {
-    "build": "npm run build:html && npm run build:assets",
+    "build": "npm run build:html && npm run build:assets && npm run build:web",
     "build:html": "shx mkdir -p docs && shx cp -r src/html/* docs/",
     "build:assets": "shx mkdir -p docs/assets && shx cp -r src/assets/* docs/assets && shx sed -i 's/\\.\\.\\/assets/assets/g' docs/index.html",
+    "build:web": "shx cp -r src/web/* docs/",
     "build:clean": "shx rm -rf docs",
     "format": "prettier --write .",
     "lint:html": "htmlhint \"**/*.html\"",
