@@ -119,7 +119,8 @@
         text-transform: capitalize;
       }
 
-      nav div a:hover {
+      nav div a:hover,
+      nav div a:active {
         opacity: 1;
       }
 
@@ -166,7 +167,7 @@
         color: var(--text-color);
         font-size: 1.5rem;
         line-height: 1.5;
-        margin: 0 5% 2rem;
+        margin: 0 auto 2rem;
         max-width: 90%;
       }
 
@@ -268,26 +269,16 @@
         grid-template-columns: repeat(auto-fit, 100%);
       }
 
-      #contact .section-items {
-        gap: 0.5rem;
-        margin: 0 25%;
-        width: 50%;
-      }
-
       #contact .section-item {
         display: flex;
         flex-direction: column;
-        max-width: 80%;
-        margin: 0 auto;
-        width: 100%;
       }
 
       #contact label {
         color: var(--title-color);
       }
 
-      #contact input,
-      #contact textarea {
+      #contact input {
         border: solid 1px var(--border-color);
         color: var(--input-color);
         font-size: 1rem;
@@ -296,21 +287,34 @@
         width: 100%;
       }
 
-      #contact textarea {
-        height: 4rem;
-      }
-
       #contact button {
-        align-self: center;
         background-color: var(--title-color);
         border: none;
         border-radius: 4px;
         color: var(--white);
         cursor: pointer;
+        display: block;
         font-size: 1rem;
         height: 1.5rem;
+        margin: auto auto 0;
         padding: 0 2.5rem;
         width: fit-content;
+      }
+
+      #contact button:hover {
+        background-color: var(--storm-blue);
+      }
+
+      #contact button:active {
+        opacity: 0.85;
+      }
+
+      #contact img {
+        display: block;
+        margin: 0 auto 1rem;
+        max-width: 200px;
+        object-fit: cover;
+        width: 100%;
       }
 
       #top-of-page {
@@ -389,7 +393,6 @@
           margin: 0;
           padding: 0;
           max-width: 100%;
-          text-align: center;
         }
 
         .section-item h3 {
@@ -411,7 +414,8 @@
 
         #about .section-items p,
         #about .section-items .profile-bio {
-          font-size: 0.8rem;
+          font-size: 1rem;
+          line-height: 1rem;
         }
 
         #contact .section-items {
@@ -419,11 +423,79 @@
           width: 90%;
         }
 
+        #contact img {
+          max-width: 240px;
+        }
+
         #top-of-page {
           bottom: 0.5rem;
           height: 2rem;
           right: 0.5rem;
           width: 2rem;
+        }
+      }
+
+      @media (width <= 430px) {
+        section h1,
+        section h2 {
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+
+        .section-item h3 {
+          font-size: 0.9rem;
+          line-height: 1rem;
+          margin: 0.25rem 0;
+          padding: 0;
+        }
+
+        .section-item p {
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+
+        #outcome {
+          min-width: 6.5rem;
+        }
+
+        #about .section-items p,
+        #about .section-items .profile-bio {
+          font-size: 0.8rem;
+          line-height: 1rem;
+        }
+      }
+
+      @media (width <= 375px) {
+        section h1,
+        section h2 {
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+
+        .section-item h3 {
+          font-size: 0.8rem;
+          line-height: 1rem;
+          margin: 0.25rem 0;
+          padding: 0;
+        }
+
+        .section-item p {
+          font-size: 0.8rem;
+          line-height: 1rem;
+        }
+
+        #outcome {
+          min-width: 6rem;
+        }
+
+        #about .section-items p,
+        #about .section-items .profile-bio {
+          font-size: 0.75rem;
+          line-height: 0.9rem;
+        }
+
+        #contact img {
+          max-width: 150px;
         }
       }
     </style>
@@ -525,7 +597,7 @@
             <div class="profile">
               <div class="profile-details">
                 <div class="profile-image">
-                  <img src="assets/dpadgett.jpeg" alt="David Padgett" height="200" width="200" />
+                  <img src="assets/dpadgett.jpeg" alt="David Padgett" height="200" width="200" loading="lazy" />
                 </div>
                 <div class="profile-name">David Padgett</div>
                 <div class="profile-links">
@@ -546,7 +618,7 @@
                   </a>
                 </div>
               </div>
-              <div class="profile-bio">David is a full-stack engineering leader with 30 years of experience building software and leading the teams that deliver it, across startups, big tech, and enterprise organizations. He has founded three technology companies, contributed to systems at some of the industry's most recognized names, and spent a decade developing the people and practices that turn good engineers into great teams. His background spans every layer of the stack and every stage of the software lifecycle, from defining technical vision as an enterprise architect to writing and shipping production code as a principal engineer, bringing both the strategic perspective of a leader and the technical credibility of a practitioner to every engagement.</div>
+              <p class="profile-bio">David is a full-stack engineering leader with 30 years of experience building software and leading the teams that deliver it, across startups, big tech, and enterprise organizations. He has founded three technology companies, contributed to systems at some of the industry's most recognized names, and spent a decade developing the people and practices that turn good engineers into great teams. His background spans every layer of the stack and every stage of the software lifecycle, from defining technical vision as an enterprise architect to writing and shipping production code as a principal engineer, bringing both the strategic perspective of a leader and the technical credibility of a practitioner to every engagement.</p>
             </div>
           </div>
         </div>
@@ -554,20 +626,22 @@
 
       <section id="contact">
         <h2>Contact</h2>
-        <p>Every engagement starts with a conversation. Whether you represent an established organization or are navigating a technology challenge on your own — start the conversation.</p>
+        <p>Every engagement starts with a conversation. Whether you represent an established organization or are navigating a technology challenge on your own — take the first step.</p>
         <div class="section-items">
           <div class="section-item">
+            <h3>Send Email</h3>
             <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" />
+            <input type="text" id="contact-name" autocomplete="name" />
             <label for="contact-location">Location</label>
-            <input type="text" id="contact-location" />
+            <input type="text" id="contact-location" autocomplete="address-level2" />
             <label for="contact-phone">Phone Number</label>
-            <input type="tel" id="contact-phone" />
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" />
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message"></textarea>
-            <button id="contact-send" type="button">Submit</button>
+            <input type="tel" id="contact-phone" autocomplete="tel" />
+            <button id="contact-send" type="button">Send</button>
+          </div>
+          <div class="section-item">
+            <h3>Contact Info</h3>
+            <img src="assets/contact-info.png" alt="QR code with contact information" loading="lazy" />
+            <button id="download-vcard" type="button">Download</button>
           </div>
         </div>
       </section>
@@ -606,11 +680,23 @@
         const name = document.getElementById("contact-name").value.trim();
         const location = document.getElementById("contact-location").value.trim();
         const phone = document.getElementById("contact-phone").value.trim();
-        const email = document.getElementById("contact-email").value.trim();
-        const message = document.getElementById("contact-message").value.trim();
+        const message = "Every engagement starts with a conversation — share your technology challenges, questions, or goals.";
         const subject = encodeURIComponent(`Inquiry from: '${name}' [summitstreet.tech#contact]`);
-        const body = encodeURIComponent(`Name: ${name}\nLocation: ${location}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`);
+        const body = encodeURIComponent(`Name: ${name}\nLocation: ${location}\nPhone: ${phone}\n\n${message}\n\n`);
         window.location.href = `mailto:${decode("aGNldHxkb3R8dGVlcnRzdGltbXVzfGF0fG9mbmk=")}?subject=${subject}&body=${body}`;
+      }
+
+      function downloadVCard(fileName = "summit-street.vcf") {
+        const vCardString = "RFJBQ1Y6RE5FCllOQVBNT0M6c0F3b2hTQkEtWAphZXJBIHlhQiBvY3NpY25hckYgbmFTICYgYW1vbm9TICxhcGFOIHwgc2VjaXZyZVMgVEkgfCBnbml0bHVzbm9DIHlnb2xvbmhjZVQgfCB0bmVtcG9sZXZlRCBlcmF3dGZvUzpFVE9OCnNldGF0UyBkZXRpblU7NTE1NDk7QUM7YWdvdHNpbGFDOzIwOCB4b0IgT1A7OzpMRUNSQVA7S1JPVztSREEKaGNldHxkb3R8dGVlcnRzdGltbXVzLy86c3B0dGg6TFJVCmhjZXR8ZG90fHRlZXJ0c3RpbW11c3xhdHx0dGVnZGFwfGRvdHxkaXZhZDpURU5SRVROSTtLUk9XO0xJQU1FCjAxMTAtNjIyLTIxNi0xKzpFQ0lPVjtLUk9XO0xFVApsYXBpY25pclAgJiByZWRudW9GOkVMVElUCnNlaWdvbG9uaGNlVCB0ZWVydFMgdGltbXVTOkdSTwp0dGVnZGFQIGRpdmFEOk5GCjs7O2RpdmFEO3R0ZWdkYVA6TgowfGRvdHwzOk5PSVNSRVYKRFJBQ1Y6TklHRUI=";
+        const blob = new Blob([decode(vCardString)], { type: "text/vcard;charset=utf-8" });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileName);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
       }
 
       window.addEventListener("DOMContentLoaded", () => {
@@ -618,8 +704,11 @@
         anchor.href = `mailto:${decode("aGNldHxkb3R8dGVlcnRzdGltbXVzfGF0fHR0ZWdkYXB8ZG90fGRpdmFk")}`;
       });
 
-      const button = document.getElementById("contact-send");
-      button.addEventListener("click", composeEmail);
+      const contactSendButton = document.getElementById("contact-send");
+      contactSendButton.addEventListener("click", composeEmail);
+
+      const downloadVCardButton = document.getElementById("download-vcard");
+      downloadVCardButton.addEventListener("click", downloadVCard);
     </script>
 
     <script>

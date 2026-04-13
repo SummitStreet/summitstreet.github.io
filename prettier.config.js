@@ -5,19 +5,14 @@ const config = {
   tabWidth: 2,
   trailingComma: "es5",
   printWidth: 80,
-  bracketSameLine: true,
+  bracketSameLine: false,
   overrides: [
     {
       files: "*.html",
       options: {
-        // Setting an extremely high printWidth prevents line wrapping
         printWidth: 1024,
-        htmlWhitespaceSensitivity: "ignore",
+        htmlWhitespaceSensitivity: "css",
       },
-    },
-    {
-      files: "*.css",
-      options: {},
     },
   ],
 };

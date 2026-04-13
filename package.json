@@ -1,33 +1,61 @@
 {
   "name": "summitstreet.github.io",
   "version": "1.0.1",
-  "description": "https://www.summitstreet.tech",
+  "description": "https://summitstreet.tech",
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "main": "dist/server.js",
   "scripts": {
-    "build": "npm run build:html && npm run build:assets && npm run build:web",
-    "build:html": "shx mkdir -p docs && shx cp -r src/html/* docs/",
-    "build:assets": "shx mkdir -p docs/assets && shx cp -r src/assets/* docs/assets && shx sed -i 's/\\.\\.\\/assets/assets/g' docs/index.html",
+    "build": "npm run format && npm run lint && npm run build:server && npm run build:web",
+    "build:clean": "shx rm -rf dist/ && shx rm -rf docs/ !(CNAME)",
+    "build:server": "tsc",
     "build:web": "shx cp -r src/web/* docs/",
-    "build:clean": "shx rm -rf docs",
     "format": "prettier --write .",
-    "lint:html": "htmlhint \"**/*.html\"",
+    "lint": "eslint . && npm run lint:html && npm run lint:css",
+    "lint:html": "npm run lint:html:structure && npm run lint:html:scripts",
+    "lint:html:structure": "eslint --config eslint.structure.config.js \"**/*.html\"",
+    "lint:html:scripts": "eslint --config eslint.scripts.config.js \"**/*.html\"",
     "lint:css": "stylelint \"**/*.html\"",
-    "lint:js": "eslint .",
-    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server/server.ts",
+    "test": "jest"
   },
   "keywords": [],
   "author": "David Padgett <https://github.com/SummitStreet>",
   "devDependencies": {
+    "@html-eslint/eslint-plugin": "0.59.0",
+    "@html-eslint/parser": "0.59.0",
+    "@tsconfig/node-ts": "23.6.2",
+    "@tsconfig/node24": "24.0.3",
+    "@types/express": "5.0.6",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.10.1",
     "eslint": "9.39.1",
     "eslint-plugin-html": "8.1.4",
+    "eslint-plugin-jsdoc": "61.2.1",
+    "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "17.4.0",
-    "htmlhint": "1.9.2",
+    "jest": "30.2.0",
     "postcss-html": "1.8.1",
     "prettier": "3.6.2",
     "shx": "0.4.0",
     "stylelint": "17.6.0",
     "stylelint-config-standard": "40.0.0",
-    "stylelint-prettier": "5.0.3"
+    "stylelint-prettier": "5.0.3",
+    "ts-jest": "29.4.5",
+    "ts-node": "10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.6",
+    "@types/morgan": "1.9.10",
+    "cors": "2.8.6",
+    "express": "5.2.1",
+    "morgan": "1.10.1"
+  }
 }
