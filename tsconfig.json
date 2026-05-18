@@ -1,25 +1,29 @@
 {
   "extends": "@tsconfig/node24/tsconfig.json",
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"],
+  "include": ["scripts/**/*.ts", "src/**/*.ts"],
   "compilerOptions": {
+    "lib": [
+      "es2024",
+      "esnext.array",
+      "ESNext.Collection",
+      "ESNext.Error",
+      "esnext.iterator",
+      "esnext.promise",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "allowImportingTsExtensions": true,
-    "declaration": true,
-    "declarationMap": true,
     "erasableSyntaxOnly": true,
-    "isolatedModules": true,
-    "outDir": "./dist",
     "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "noImplicitAny": true,
     "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
     "rewriteRelativeImportExtensions": true,
-    "rootDir": "./src",
-    "sourceMap": true,
-    "typeRoots": ["./node_modules/@types", "./**/typescript/**/*.d.ts"],
+    "strict": true,
     "verbatimModuleSyntax": true
-  },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
   }
 }
